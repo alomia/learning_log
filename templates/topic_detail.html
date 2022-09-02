@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+  <div class="d-flex justify-content-between">
+    <p class="h2">{{ topic }}</p>
+    <a class="btn btn-primary d-flex align-items-center" href="{% url "entry_new" topic.pk %}" role="button">Add new entry</a>
+  </div>
+{% endblock page_header %}
+
+{% block content %}
+
+  {% for entry in entries %}
+    <div class="card mb-3">
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills d-flex justify-content-between align-items-center">
+          {{ entry.date_added|date:'M d, Y H:i' }}
+          <div class="d-flex">
+            <li class="nav-item">
+              <a class="btn btn-primary" href="{% url "entry_edit" entry.pk %}">Edit</a>
+            </li>
+            <li class="nav-item ml-2 mr-2">
+              <a class="btn btn-danger" href="{% url "entry_delete" entry.pk %}">Delete</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-info" href="{% url "entry_detail" entry.pk %}" >Details</a>
+            </li>
+          </div>
+        </ul>
+      </div>
+      <div class="card-body">
+        {{ entry.text|linebreaks }}
+      </div>
+    </div>
+    {% empty %}
+    <p>There are no entries for this topic yet.</p>
+  {% endfor %}
+{% endblock content %}

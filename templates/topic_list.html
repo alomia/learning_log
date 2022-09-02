@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+  <div class="d-flex justify-content-between">
+    <p class="h2">Topics</p>
+    <a class="btn btn-primary d-flex align-items-center" href="{% url "topic_new" %}" role="button">Add a new topic</a>
+  </div>
+{% endblock page_header %}
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-2">
+  {% for topic in topic_list %}
+    <div class="col mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5><a>{{ topic }}</a></h5>
+        </div>
+        <div class="card-footer">
+          <a class="btn btn btn-info" href="{% url "topic_detail" topic.pk %}">See entries</a>
+          <a class="btn btn-danger" href="{% url "topic_delete" topic.pk %}">Delete</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <h3>No topics have been added yet.</h3>
+  {% endfor %}
+</div>
+{% endblock content %}

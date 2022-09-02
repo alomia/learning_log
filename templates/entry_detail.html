@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+  <p><a class="h2" href="{% url "topic_detail" object.topic.pk %}">{{ object.topic }}</a></p>
+{% endblock page_header %}
+
+{% block content %}
+  <div>
+    <p>{{ object.date_added }}</p>
+    <p>{{ object.text }}</p>
+  </div>
+  <hr>
+  <div>
+    <a class="btn btn-primary" href="{% url "entry_edit" object.pk %}">Edit</a>
+    <a class="btn btn-danger" href="{% url "entry_delete" object.pk %}">Delete</a>
+  </div>
+{% endblock content %}
