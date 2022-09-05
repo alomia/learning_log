@@ -1,0 +1,12 @@
+.btn-login {
+  color: white;
+}
+
+.btn-login:hover {
+  color: white;
+  text-decoration: none;
+}
+
+#btn-topics:hover {
+  color: lightgray;
+}
