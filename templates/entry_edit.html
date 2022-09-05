@@ -2,6 +2,8 @@
 {% load bootstrap4 %}
 {% load crispy_forms_tags %}
 
+{% block title %}{{ user.username }}/{{ object.topic | lower}}/edit_entry/{{ object.pk }}{% endblock title %}
+
 {% block page_header %}
   <p><a class="h2" href="{% url "topic_detail" entry.topic.pk %}">{{ entry.topic }}</a></p>
 {% endblock page_header %}

@@ -2,6 +2,8 @@
 {% load bootstrap4 %}
 {% load crispy_forms_tags %}
 
+{% block title %}{{user.username}}/new_topic{% endblock title %}
+
 {% block page_header %}
 <p class="h2">Add a new topic:</p>
 {% endblock page_header %}

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}{{ user.username }}/delete/{{ topic.title | lower}}{% endblock title %}
+
 {% block page_header %}
   <h2>Delete topic</h2>
 {% endblock page_header %}
