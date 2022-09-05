@@ -8,6 +8,7 @@
 {% endblock page_header %}
 
 {% block content %}
+{% if topic_list %}
 <div class="row row-cols-1 row-cols-md-2">
   {% for topic in topic_list %}
     <div class="col mb-4">
@@ -21,8 +22,9 @@
         </div>
       </div>
     </div>
-    {% empty %}
-    <h3>No topics have been added yet.</h3>
   {% endfor %}
 </div>
+{% else %}
+<p>No topics have been added yet.</p>
+{% endif %}
 {% endblock content %}

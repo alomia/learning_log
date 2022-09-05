@@ -75,14 +75,14 @@ class EntryCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         form = super().get_form(form_class)
         form.fields["text"].label = ""
         return form
-    
+
     def form_valid(self, form):
         form.instance.topic = Topic.objects.get(id=self.kwargs["pk"])
         return super().form_valid(form)
     
     def test_func(self):
-        obj = self.get_object()
-        return obj.topic.author == self.request.user
+        obj = Topic.objects.get(id=self.kwargs["pk"])
+        return obj.author == self.request.user
 
 
 class EntryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
